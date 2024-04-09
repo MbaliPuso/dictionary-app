@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mbali Puso - Dictionary App</title>
+</head>
+<body>
+   <header>Dictionary Website</header>
+   
+   <main>
+    <section>
+        <h2>Search</h2>
+        <form>
+            <input type="text" id="wordInput" placeholder="Enter a word">
+            <button type="button" onclick="searchWord()">Search</button>
+        </form>  
+    </section>
+    <section>
+        <h2>Word Definition</h2>
+        <div id="definition"></div>
+    </section>
+   </main>
+
+   <footer>
+    <p>© 2023 Your Dictionary Website. All rights reserved.</p>
+   </footer>
+
+   <script>
+    function searchWord() {
+        var word = document.getElementById("wordInput").value;
+        var definition = getDefinitionFromDatabase(word);
+        displayDefition(definition);
+    }
+
+    function getDefinitionFromDatabase(word) {
+        var dictionary = {
+            "apple": "A fruit that is round and typically red or yellow.",
+            "banana": "An elongated edible fruit that is yellow and soft when ripe.",
+            "orange": "A round citrus fruit with a tough bright reddish-yellow rind."
+        };
+        return dictionary[word.toLowerCase()] || "Definition not found";
+    }
+
+    function displayDefinition(definition) {
+        var definitionDiv = document.getElementById("definition");
+        definitionDiv.innerHTML = "<p>" + definition + "</p>";
+    }
+   </script>
+</body>
+</html>
